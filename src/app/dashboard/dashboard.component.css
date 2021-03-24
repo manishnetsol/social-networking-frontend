@@ -1,0 +1,36 @@
+
+ 
+.wrap-all-the-things {
+
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    padding-left: 73px;
+    margin-top: 0;
+    transition: transform 400ms, opacity 400ms;
+  }
+  @media screen and (max: 480px) {
+    .wrap-all-the-things {
+      padding-left: 53px;
+    }
+  }
+
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  #btn-post {
+    min-width: 25%;
+    max-width: 25%;
+    background-color:rgb(99,64,135);
+    font-weight: 600;
+  }
+  
+  #upload_image_button {
+    position: absolute;
+    top: 45.5%;
+    right: 5%;
+    background-color: rgb(168,106,221);
+    font-weight: 500;
+  }

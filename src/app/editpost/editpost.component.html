@@ -1,0 +1,25 @@
+<app-onlysidebar></app-onlysidebar>
+<div class="wrap-all-the-things">
+    <app-onlynav></app-onlynav>
+    <div class="container mt-4">
+        <div class="col-1">
+          <a href="#" routerLink="/dashboard"><i class="fa fa-long-arrow-left fa-2x "
+                    style="color:rgb(99,64,135)"></i></a>
+        </div>
+        <h2 class="text-center" style="color:rgb(133,73,167)">Update Post</h2>
+
+        <div class="row justify-content-center">
+           
+            <div class='col-6 mt-4'>
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <textarea formControlName="caption" id="caption" rows='6' type="text" [(ngModel)]="Post.caption"
+                            placeholder="Add Your Comment Here!" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white" id="buttoncolor">Update</button>
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>

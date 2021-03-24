@@ -1,0 +1,72 @@
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<div class="body">
+<div class="row" style="margin: 0 0 10px 0;">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3 mt-2">
+        <div class="row justify-content-center" >
+            
+                <h1 id="logofont" >GEN </h1>
+                <img src="..\assets\images\logo4.png"  id="rotatelogo" >
+            
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+
+<div class="row" style="margin: 0;">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron" style="padding:20px 30px;background-color: rgb(237, 215, 255);">
+            <h2 class="text-center" style="color:rgb(133,73,167)">Sign Up</h2>
+            <form [formGroup]="angForm" (ngSubmit)=" postdata(angForm)" autocomplete="off">
+                <div class="form-group">
+                    <label for="name">Name</label><span class="text-danger">*</span>
+                    <div class="controls">
+                        <input type="text" name="username" formControlName="username" class="form-control input-sm"
+                            placeholder="Name" 
+                            [ngClass]="{'is-invalid': (f.username.invalid && f.username.touched) || (submitted && f.username.invalid)}">
+                        <div class="invalid-feedback" *ngIf=" f.username.errors">
+                            <div *ngIf="f.username.errors.minlength">Please enter atleast 5 charachters</div>
+                            <div *ngIf="f.username.errors.required">Please enter name</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label><span class="text-danger">*</span>
+                    <div class="controls">
+                        <input type="email" name="email" formControlName="email" class="form-control input-sm"
+                            placeholder="Email"
+                            [ngClass]="{'is-invalid': (f.email.invalid && f.email.touched) || (submitted && f.email.invalid)}">
+                        <div class="invalid-feedback" *ngIf="f.email.errors">
+                            <div *ngIf="f.email.errors.required">Please enter email</div>
+                            <div *ngIf="f.email.errors.email">Please enter a valid email</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label><span class="text-danger">*</span>
+                    <div class="controls">
+                        <input type="password" name="password" formControlName="password" autocomplete="off"
+                            class="form-control input-sm" placeholder="Password"
+                            [ngClass]="{'is-invalid': (f.password.invalid && f.password.touched) || (submitted &&f.password.invalid)}">
+                        <div class="invalid-feedback" *ngIf=" f.password.errors">
+                            <div *ngIf="f.password.errors.required">Please enter password</div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn text-white" id="buttoncolor">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+</div>

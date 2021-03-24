@@ -1,0 +1,50 @@
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<div class="body">
+<div class="row" style="margin: 0 0 10px 0; ">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3 mt-2 ">
+        <div class="row justify-content-center">
+                <h1 id="logofont" >GEN </h1>
+                <img src="..\assets\images\logo4.png"  id="rotatelogo">    
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+<div class="row" style=" margin: 0px;">
+<div class="col-md-4">
+</div>
+<div class="col-md-4 col-md-offset-5" >
+<div class="jumbotron"  style="padding:20px 30px ; background-color: rgb(237, 215, 255);">
+    <h2 class="text-center" style="color: rgb(133,73,167)">Login</h2>
+<form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" >
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" name="email" class="form-control"
+         [ngClass]="{ 'is-invalid': (f.email.errors && f.email.touched)||(submitted && f.email.errors)}" />
+        <div *ngIf="f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" formControlName="password" name="password" class="form-control" 
+        [ngClass]="{ 'is-invalid': (submitted && f.password.errors) ||(f.password.invalid && f.password.touched)}" />
+        <div *ngIf="f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+    </div>
+<button type="submit" class="btn text-white " id="buttoncolor" >Login</button>
+</form>
+</div>
+</div>
+<div class="col-md-5">
+</div>
+</div>
+</div>

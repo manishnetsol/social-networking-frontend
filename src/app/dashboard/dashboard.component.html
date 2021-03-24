@@ -1,0 +1,109 @@
+<app-onlysidebar></app-onlysidebar>
+<div class="wrap-all-the-things">
+  <app-onlynav></app-onlynav>
+  <!-- For Creating A Post -->
+  <div class="container" style="padding-left: 10%; ">
+    <h2 style="margin :10px;color:rgb(133,73,167)">What's on your Mind</h2>
+    <hr>
+    <div class="row">
+      <div id="insert_post" class="col-sm-6">
+        <form [formGroup]="myform" (ngSubmit)="formSubmit()" method="post" enctype="multipart/form-data">
+          <textarea class="form-control" id="content" rows="4" formControlName="caption"
+            placeholder="What's in your mind?"
+            style="font-size:18px;  border: 1.5px solid rgb(222,183,255);"></textarea><br>
+          <label class="btn text-white" id="upload_image_button">Select Image
+            <input type="file" name="upload_image" size="300">
+          </label>
+          <button id="btn-post" class="btn text-white">Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- For Showing All the posts -->
+  <div class="container">
+    <div class="row justify-content-center ">
+      <div class="col-md-6 m-2" *ngFor="let u of users">
+        <div class="card shadow " style="border-radius: 6px; background-color: rgb(244, 231, 255);">
+          <div class="card-body">
+            <div class="col-12 ml-2">
+              <h6 class="card-title" style="margin:0">{{u.username}}</h6>
+              <div class="fbvdd" *ngIf="u.caption !='--' ">
+                <p class="card-text" style="margin:0">{{u.date_created}}</p>
+                <p class="card-text" style="margin-top:10px">{{u.caption}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="fbvdd" *ngIf="u.post_url !=null ">
+            <img class="card-img-top img-fluid" src="{{path + u.post_url}}" alt="Card image cap">
+          </div>
+
+
+          <div class="row justify-content-end m-1 mr-4">
+            <div class="col-2 col-lg-1 col-md-2 col-sm-2 mr-2">
+              <button id="btn" [routerLink]="['/editpost',u.post_id]" class="btn btn-gray p-1" name="sub"><i
+                  class="fa fa-pencil-square-o fa-2x" style="color:rgb(31, 32, 32);"></i></button>
+            </div>
+            <div class="col-2 col-lg-1 col-md-2 col-sm-2 mr-2">
+              <button id="btn" (click)="likePost(u)" class="btn btn-gray p-1" name="sub"><i class="fa fa-heart fa-2x"
+                  style="color:red;"></i></button>
+              <div class="col-5">
+                <p>{{u.likes}}</p>
+              </div>
+
+            </div>
+
+            <div class="col-2 col-lg-1 col-md-2 col-sm-2 mr-2">
+              <button id="btn" class="btn btn-gray p-1" name="sub"
+                (click)="openModal(template);getComments(u.post_id);"><i class="fa fa-comment fa-2x"
+                  style="color:rgb(22, 208, 255);"></i></button>
+              <div class="col-5">
+                <p>{{u.comments}}</p>
+              </div>
+            </div>
+            <!-- for opening modal of comments -->
+            <ng-template #template>
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">Comments </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="commentform" (ngSubmit)="submitcomment(u.post_id)">
+                  <div class="form-group">
+                    <textarea formControlName="comment" id="comment" rows="1" class="form-control"
+                      placeholder="Add Your Comment Here!"></textarea>
+                  </div>
+                  <div class="row justify-content-end">
+                    <div class="col-3">
+                      <button class="btn text-white" type="submit"
+                        style="background-color:rgb(232, 85, 252); font-weight: 600;">Comment</button>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="row justify-content-center">
+                  <div class="col-9">
+                    <div *ngIf="comments.length">
+                      <div class="row" *ngFor="let cmt of comments">
+                        <p style="font-weight: 600; color:rgb(29, 28, 29); margin-right: 2%;">{{cmt.username}}</p>
+                        <p>{{cmt.comment}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </ng-template>
+
+            <div class="col-2 col-lg-1 col-md-2 col-sm-2 ">
+              <button id="btn" (click)="getdel(u)" class="btn btn-gray  p-1" name="sub"><i class="fa fa-trash-o fa-2x"
+                  style="color: rgb(24, 23, 23)"></i></button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>

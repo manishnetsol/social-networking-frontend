@@ -1,0 +1,22 @@
+
+
+.wrap-all-the-things {
+    /* background-color: rgb(250,244,255); */
+    min-height: 76vh;
+    height: 100%;
+    width: 100%;
+    padding-left: 55px;
+    margin-top: 0;
+    transition: transform 400ms, opacity 400ms;
+  }
+  @media screen and (max: 480px) {
+    .wrap-all-the-things {
+      padding-left: 70px;
+    }
+  }
+
+  #buttoncolor
+{
+    background-color:rgb(99,64,135);
+    font-weight: 600;
+}

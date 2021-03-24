@@ -1,0 +1,66 @@
+#rotatelogo
+{
+    height:100px;
+    width: 100px;
+    -ms-transform: rotate(-20deg);
+                transform: rotate(-20deg);
+}
+
+.body
+{
+    background-color: rgb(250, 244, 255);
+   
+}
+
+#logofont
+{
+    margin-top: 5%;
+     font-size:50px;
+      color: rgb(99,64,135);
+       padding-right:10px ;
+       font-family: 'Averia Serif Libre', cursive;
+}
+
+input
+{
+   border: 1.5px solid rgb(222,183,255);
+}
+
+label
+{
+    color:rgb(99,64,135);
+}
+#buttoncolor
+{
+    background-color:rgb(99,64,135);
+    font-weight: 600;
+}
+@media (max-width: 450px)
+{
+    #rotatelogo
+    {
+        height: 60px;
+        width: 60px;
+    }
+
+    #logofont
+    {
+        margin-top: 3%;
+        font-size: 30px;
+    }
+}
+
+@media (min-width:451px) and (max-width: 750px)
+{
+    #rotatelogo
+    {
+        height: 80px;
+        width: 80px;
+    }
+
+    #logofont
+    {
+        margin-top: 2%;
+        font-size: 40px;
+    }
+}

@@ -19,6 +19,11 @@
        font-family: 'Averia Serif Libre', cursive;
 }
 
+.form-group
+{
+    margin-bottom:10px;
+}
+
 input
 {
    border: 1.5px solid rgb(222,183,255);
@@ -27,12 +32,19 @@ input
 label
 {
     color:rgb(99,64,135);
+    margin-bottom: 0;
+}
+
+a
+{
+    text-decoration: none;
 }
 
 #buttoncolor
 {
     background-color:rgb(99,64,135);
     font-weight: 600;
+
 }
 
 @media (max-width: 450px)

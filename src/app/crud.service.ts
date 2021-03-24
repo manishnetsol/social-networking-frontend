@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import{HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import{HttpClient} from '@angular/common/http';
 export class CrudService {
 
   apiUrl2="http://localhost:8000/";
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,private router :Router) { }
 // create user
   createUser(formvalues:any){
     return this.http.post<any>(this.apiUrl2 +"users", JSON.stringify(formvalues)).subscribe(res => {
@@ -47,7 +49,11 @@ export class CrudService {
     getToken() {
       return localStorage.getItem('token')
     }
-
+// logged Out
+logoutUser() {
+  localStorage.removeItem('token');
+  this.router.navigate(['/login']);
+}
   //for creating posts
   create(formvalues:any){
     return this.http.post(this.apiUrl2 +"posts", JSON.stringify(formvalues))

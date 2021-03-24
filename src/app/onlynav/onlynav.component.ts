@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-onlynav',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnlynavComponent implements OnInit {
   collapsed = true;
-  constructor() { }
+  constructor(public crudservice:CrudService) { }
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -22,6 +22,9 @@
         </div>
         <div class="col-md-4 col-md-offset-5">
             <div class="jumbotron" style="padding:10px 20px ; background-color: rgb(228, 245, 248);">
+                <div *ngIf="service.showLoginError">
+                    <p class="text-danger">Login Failed!! Password Incorrect</p>
+                </div>
                 <h2 class="text-center" style="color: rgb(25, 118, 124)">Login</h2>
                 <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)">
                     <div class="form-group">

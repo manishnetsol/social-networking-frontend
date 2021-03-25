@@ -22,11 +22,12 @@ export class LoginComponent implements OnInit {
   postdata(angForm1:any){
   this.submitted = true;
   console.log(angForm1.value.email,angForm1.value.password);
-  this.service.loginUser(this.angForm.value)
+  this.service.loginUser(this.angForm.value);
   console.log('Login successfully!');
   // console.log(this.displayData());
   //this.angForm.reset();
-this.router.navigate(['dashboard']);
+  this.router.navigate(['dashboard']);
+  this.service.showLoginError = false;
 
 }
 

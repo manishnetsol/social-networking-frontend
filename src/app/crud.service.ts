@@ -25,7 +25,7 @@ export class CrudService {
 
   //login
 
-  
+  showLoginError = false;
   error:any
   user_id:any;
     loginUser(formvalues:any) {
@@ -39,7 +39,9 @@ export class CrudService {
         // this.user_id = tokenInfo.data.id; // show decoded token object in console
         // console.log(expireDate);
       },
-     (err) => {alert(err.error.message);}
+     (err) => {
+       this.showLoginError = true;
+      }
     )
     }
   
@@ -90,7 +92,7 @@ logoutUser() {
 // create comments
    createComment(post_id:any,user_id:any,comment:any)
    {
-     return this.http.post<any>(this.apiUrl2 + "comments" ,JSON.stringify({user_id,post_id,comment}));
+     return this.http.post(this.apiUrl2 + "comments" ,JSON.stringify({user_id,post_id,comment}));
    }
 
   //  get all delete

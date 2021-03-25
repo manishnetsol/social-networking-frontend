@@ -9,6 +9,15 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  // for delete Confirmation 
+  placements = ['top'];
+  popoverTitle = 'Are you sure?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
+  confirmText = 'Yes';
+  cancelText = 'No';
+  confirmClicked = false;
+  cancelClicked = false;
+  
   myform: FormGroup|any;
   commentform:FormGroup|any;
   modalRef:BsModalRef|any;
@@ -62,6 +71,7 @@ getAllPost()
 
 // Delete Post 
 getdel(u:any){
+
   this.service.getdelete(u.post_id).subscribe(data=>{
      console.log(u.post_id);
      this.getAllPost();
@@ -96,14 +106,26 @@ openModal(template: TemplateRef<any>) {
 
 // to Get All Comments
 comments:any=[];
-getComments(comment_id:any)
+getComments(post_id:any)
 {
-  this.service.getcomments(comment_id).subscribe(data=>
+  this.service.getcomments(post_id).subscribe(data=>
     {
      this.comments=data ;
       console.log(this.comments);
     });
 }
+
+// to delete comment
+
+delcomment(cmt:any){
+  
+  this.service.deletecomment(cmt.comment_id).subscribe(data=>{
+     console.log(cmt.comment_id);
+     this.getComments(cmt.post_id);
+     this.getAllPost();
+  }) 
+}
+
 
 // for login
 

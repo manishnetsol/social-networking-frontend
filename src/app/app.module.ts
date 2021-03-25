@@ -17,6 +17,8 @@ import { OnlysidebarComponent } from './onlysidebar/onlysidebar.component';
 import { OnlynavComponent } from './onlynav/onlynav.component';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { CrudGuard } from './crud.guard';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
 
@@ -24,16 +26,14 @@ import { CrudGuard } from './crud.guard';
 @NgModule({
   declarations: [
     AppComponent,
-  
     FooterComponent,
     RegistrationComponent,
     LoginComponent,
- 
     DashboardComponent,
     EditpostComponent,
-
     OnlysidebarComponent,
     OnlynavComponent,
+    ConfirmComponent,
     
   ],
   imports: [
@@ -45,6 +45,9 @@ import { CrudGuard } from './crud.guard';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger', // set defaults here
+    }),
   ],
   providers: [
     CrudGuard, {

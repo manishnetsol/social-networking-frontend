@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
     "@fortawesome/angular-fontawesome": "^0.8.2",
+    "@ngneat/overview": "^1.0.0",
+    "angular-confirmation-popover": "^6.0.0",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",

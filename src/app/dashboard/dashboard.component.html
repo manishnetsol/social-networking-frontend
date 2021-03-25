@@ -3,14 +3,14 @@
   <app-onlynav></app-onlynav>
   <!-- For Creating A Post -->
   <div class="container" style="padding-left: 10%; ">
-    <h2 style="margin :10px;color:rgb(133,73,167)">What's on your Mind</h2>
+    <h2 style="margin :10px;color:rgb(25, 118, 124)">What's on your Mind</h2>
     <hr>
     <div class="row">
       <div id="insert_post" class="col-sm-6">
         <form [formGroup]="myform" (ngSubmit)="formSubmit()" method="post" enctype="multipart/form-data">
           <textarea class="form-control" id="content" rows="4" formControlName="caption"
             placeholder="What's in your mind?"
-            style="font-size:18px;  border: 1.5px solid rgb(222,183,255);"></textarea><br>
+            style="font-size:18px;  border: 1.5px solid rgb(104, 159, 163);"></textarea><br>
           <label class="btn text-white" id="upload_image_button">Select Image
             <input type="file" name="post_url" (change)="onFileSelect($event)" size="300">
           </label>
@@ -23,7 +23,7 @@
   <div class="container">
     <div class="row justify-content-center ">
       <div class="col-md-6 m-2" *ngFor="let u of users">
-        <div class="card shadow " style="border-radius: 6px; background-color: rgb(244, 231, 255);">
+        <div class="card shadow " style="border-radius: 6px; background-color: rgb(239, 249, 250);">
           <div class="card-body">
             <div class="col-12 ml-2">
               <h6 class="card-title" style="margin:0">{{u.username}}</h6>
@@ -77,7 +77,7 @@
                   <div class="row justify-content-end">
                     <div class="col-3">
                       <button class="btn text-white" type="submit"
-                        style="background-color:rgb(232, 85, 252); font-weight: 600;">Comment</button>
+                        style="background-color:rgb(25, 118, 124); font-weight: 600;">Comment</button>
                     </div>
                   </div>
                 </form>

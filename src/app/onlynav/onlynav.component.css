@@ -1,6 +1,6 @@
 #fixed-navbar
 {
-    background-color: rgb(133,73,167);
+   
     font-weight: 500;
     z-index: 0;
 }
@@ -8,13 +8,13 @@
 #buttonsearch
 {
     background-color: white;
-    color: rgb(133,73,167);
+    color: rgb(25, 118, 124);
     font-weight: bolder;
 }
 
 #buttonsearch:hover
 {
-    background-color: rgb(222,183,255);
+    background-color: rgb(130, 194, 197);
     color:black;
 }
 

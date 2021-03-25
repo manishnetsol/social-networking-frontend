@@ -6,24 +6,20 @@
                 transform: rotate(-20deg);
 }
 
-.body
-{
-    background-color: rgb(250, 244, 255);
-   
-}
+
 
 #logofont
 {
     margin-top: 5%;
      font-size:50px;
-      color: rgb(99,64,135);
+      color: rgb(25, 118, 124);
        padding-right:10px ;
        font-family: 'Averia Serif Libre', cursive;
 }
 
 input
 {
-   border: 1.5px solid rgb(222,183,255);
+   border: 1.5px solid rgb(184, 219, 221);
 }
 
 .form-group
@@ -32,7 +28,7 @@ input
 }
 label
 {
-    color:rgb(99,64,135);
+    color:rgb(25, 118, 124);
     margin-bottom: 0;
 }
 a
@@ -42,7 +38,7 @@ a
 
 #buttoncolor
 {
-    background-color:rgb(99,64,135);
+    background-color:rgb(25, 118, 124);
     font-weight: 600;
 }
 @media (max-width: 450px)

@@ -79,7 +79,7 @@ body {
   max-height: 25px;
   z-index: 1;
   fill: #fefefe;
-  background: rgb(35,21,44);
+  background: rgb(1, 33, 36);
   transition: 400ms;
 }
 @media screen and (max: 768px) {
@@ -97,7 +97,7 @@ body {
   width: 73px;
   height: 100%;
   z-index: 1;
-  background:rgb(35,21,44);
+  background: rgb(1, 33, 36);
   transition: width 400ms;
 }
 .main-head:hover {

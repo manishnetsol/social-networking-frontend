@@ -23,7 +23,7 @@
   #btn-post {
     min-width: 25%;
     max-width: 25%;
-    background-color:rgb(99,64,135);
+    background-color: rgb(25, 118, 124);
     font-weight: 600;
   }
   
@@ -31,7 +31,7 @@
     position: absolute;
     top: 45.5%;
     right: 5%;
-    background-color: rgb(168,106,221);
+    background-color: rgb(25, 118, 124);
     font-weight: 500;
   }
 

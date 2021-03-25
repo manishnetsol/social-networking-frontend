@@ -56,7 +56,7 @@ logoutUser() {
 }
   //for creating posts
   create(formvalues:any){
-    return this.http.post(this.apiUrl2 +"posts", JSON.stringify(formvalues))
+    return this.http.post(this.apiUrl2 +"posts", formvalues)
   }
  //delete post
   getdelete(post_id:number){

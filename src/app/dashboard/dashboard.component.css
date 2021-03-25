@@ -34,3 +34,7 @@
     background-color: rgb(168,106,221);
     font-weight: 500;
   }
+
+  .img-fluid {
+    width: 90%;
+  }

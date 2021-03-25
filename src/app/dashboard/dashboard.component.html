@@ -12,7 +12,7 @@
             placeholder="What's in your mind?"
             style="font-size:18px;  border: 1.5px solid rgb(222,183,255);"></textarea><br>
           <label class="btn text-white" id="upload_image_button">Select Image
-            <input type="file" name="upload_image" size="300">
+            <input type="file" name="post_url" (change)="onFileSelect($event)" size="300">
           </label>
           <button id="btn-post" class="btn text-white">Post</button>
         </form>
@@ -27,13 +27,13 @@
           <div class="card-body">
             <div class="col-12 ml-2">
               <h6 class="card-title" style="margin:0">{{u.username}}</h6>
-              <div class="fbvdd" *ngIf="u.caption !='--' ">
-                <p class="card-text" style="margin:0">{{u.date_created}}</p>
+              <p class="card-text" style="margin:0">{{u.date_created}}</p>
+              <div class="fbvdd" *ngIf="u.caption !=null || u.caption !='null'">
                 <p class="card-text" style="margin-top:10px">{{u.caption}}</p>
               </div>
             </div>
           </div>
-          <div class="fbvdd" *ngIf="u.post_url !=null ">
+          <div class="fbvdd text-center mb-2" *ngIf="u.post_url !=null ">
             <img class="card-img-top img-fluid" src="{{path + u.post_url}}" alt="Card image cap">
           </div>
 

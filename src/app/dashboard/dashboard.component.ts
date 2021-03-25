@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   confirmClicked = false;
   cancelClicked = false;
   
+  path = "http://localhost:8000/"
   myform: FormGroup|any;
   commentform:FormGroup|any;
   modalRef:BsModalRef|any;
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit {
       caption: [''],
       user_id:[this.jwtDetails.data.id],
       type:['0'],
-      post_url:[null],
+      post_url:[null]
     });
 
     // for Comment
@@ -44,18 +45,38 @@ export class DashboardComponent implements OnInit {
    this.getAllPost();
   }
 
+  onFileSelect(event:any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.myform.get('post_url').setValue(file);
+      console.log(file.name);
+    }
+  }
+
 // Post Data Of Created post to api
   postdata:any;
   submitted = false;
   formSubmit() {
     this.postdata = this.myform.value;
     this.submitted = true;
-    this.service.create(this.postdata).subscribe(data => {
-      console.log('Post created successfully!');
-      
-      this.myform.controls['caption'].reset();
-      this.getAllPost();
-     })
+    const formData = new FormData();
+    formData.append('post_url', this.myform.get('post_url').value);
+    formData.append('type', this.myform.get('type').value);
+    formData.append('user_id', this.myform.get('user_id').value);
+    formData.append('caption', this.myform.get('caption').value);
+    if (this.myform.controls['caption'] != '' || this.myform.controls['post_url'] != null) {
+      this.service.create(formData).subscribe(data => {
+
+        console.log('Post created successfully!');
+        
+        this.myform.controls['caption'].reset();
+        this.myform.controls['post_url'].reset();
+        this.getAllPost();
+       })
+    }
+    else {
+      alert("Kuch to daal bhai");
+    }
 }
 
 //To Get All Posts
@@ -137,6 +158,8 @@ getDecodedAccessToken(token: string): any {
       return null;
   }
 }
+
+// Upload Photo using name = 'image'
 
 }
 

@@ -11,7 +11,7 @@ export class RegistrationComponent implements OnInit
 {
     angForm: FormGroup|any;
     submitted = false;
-    constructor(private fb: FormBuilder,private service : CrudService,private router:Router)
+    constructor(private fb: FormBuilder,public service : CrudService,private router:Router)
         { }
     ngOnInit(): void 
     {
@@ -30,11 +30,25 @@ export class RegistrationComponent implements OnInit
 {
   this.submitted = true;
 
-  console.log(angForm1.value.username,angForm1.value.email,angForm1.value.password);
-  this.service.createUser(this.angForm.value);
-    console.log('User created successfully!');
-   // this.angForm.reset();
- this.router.navigate(['login']);
+  
+  this.service.createUser(this.angForm.value).subscribe(res => {
+    this.service.showSignUpError=false;
+    this.service.LoginMsg=res.message;
+    this.service.LoginSuccess= true;
+    this.router.navigate(['login']);
+   },
+   (err) => {
+     this.service.showSignUpError = true;
+    this.service.signUpMsg = err.error.message;
+    }
+   )
+
+
+    // if(!this.service.showSignUpError){
+      
+    // }
+      
+    
 }
 
 }

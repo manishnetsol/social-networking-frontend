@@ -8,14 +8,16 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class CrudService {
+  LoginMsg:any;
+  signUpMsg:any;
+  LoginSuccess = false;
+  showSignUpError=true;
 
   apiUrl2="http://localhost:8000/";
   constructor(private http : HttpClient,private router :Router) { }
 // create user
   createUser(formvalues:any){
-    return this.http.post<any>(this.apiUrl2 +"users", JSON.stringify(formvalues)).subscribe(res => {
-      alert(res.message);
-    })
+    return this.http.post<any>(this.apiUrl2 +"users", JSON.stringify(formvalues))
   }
 //get user
   getUsers2()
@@ -25,24 +27,13 @@ export class CrudService {
 
   //login
 
+
   showLoginError = false;
+  
   error:any
   user_id:any;
     loginUser(formvalues:any) {
-      return this.http.post<any>(this.apiUrl2 +"login", JSON.stringify(formvalues)).subscribe(res => {
-        alert(res.message);
-        // console.log("Token: " + res.jwt);
-        localStorage.setItem('token', res.jwt); // Stored token in Local Storage
-        // let tokenInfo = this.getDecodedAccessToken(res.jwt); // decode token
-        // console.log(tokenInfo);
-        // let expireDate = tokenInfo.exp; // get token expiration dateTime
-        // this.user_id = tokenInfo.data.id; // show decoded token object in console
-        // console.log(expireDate);
-      },
-     (err) => {
-       this.showLoginError = true;
-      }
-    )
+      return this.http.post<any>(this.apiUrl2 +"login", JSON.stringify(formvalues))
     }
   
     loggedInUser() {

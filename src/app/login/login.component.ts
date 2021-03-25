@@ -10,7 +10,7 @@ import{Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   angForm: FormGroup;
   submitted = false;
-  constructor(private fb: FormBuilder,private service : CrudService , private router:Router) { 
+  constructor(private fb: FormBuilder,public Loginservice : CrudService , private router:Router) { 
     this.angForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -21,13 +21,23 @@ export class LoginComponent implements OnInit {
   get f() { return this.angForm.controls; }
   postdata(angForm1:any){
   this.submitted = true;
-  console.log(angForm1.value.email,angForm1.value.password);
-  this.service.loginUser(this.angForm.value);
-  console.log('Login successfully!');
-  // console.log(this.displayData());
-  //this.angForm.reset();
-  this.router.navigate(['dashboard']);
-  this.service.showLoginError = false;
+  this.Loginservice.loginUser(this.angForm.value).subscribe(res => {
+    localStorage.setItem('token', res.jwt); // Stored token in Local Storage
+    this.router.navigate(['dashboard']);
+     this.Loginservice.showLoginError = false;
+    },
+  (err) => {
+   this.Loginservice.LoginSuccess=false;
+   this.Loginservice.showLoginError = true;
+    this.Loginservice.LoginMsg = err.error.message;
+    
+  }
+)
+
+
+  // console.log('Login successfully!');
+ 
+  
 
 }
 

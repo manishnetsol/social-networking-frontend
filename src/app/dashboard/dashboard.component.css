@@ -29,12 +29,39 @@
   
   #upload_image_button {
     position: absolute;
-    top: 45.5%;
+    top: 40%;
     right: 5%;
     background-color: rgb(25, 118, 124);
     font-weight: 500;
   }
 
+  #upload_image_button1 {
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    background-color: rgb(25, 118, 124);
+  }
+
+/*   
   .img-fluid {
-    width: 90%;
+    width: 75%;
+    height:60%;
+  } */
+
+  .card-img-top {
+    width: 85%;
+    height: 30vw;
+    object-fit: cover;
+  }
+  /* .wrapper
+  {
+    padding:4% 5%;
+  } */
+
+  @media (max-width:768px)
+  {
+    .card-img-top{
+      height:50vw;
+      width: 80%;
+    }
   }

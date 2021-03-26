@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   cancelText = 'No';
   confirmClicked = false;
   cancelClicked = false;
-  
+
   path = "http://localhost:8000/"
   myform: FormGroup|any;
   commentform:FormGroup|any;
@@ -44,12 +44,15 @@ export class DashboardComponent implements OnInit {
     });
    this.getAllPost();
   }
-
+// for file select
+isSelected=false;
+file:any;
   onFileSelect(event:any) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.myform.get('post_url').setValue(file);
-      console.log(file.name);
+      this.isSelected=true;
+      this.file = event.target.files[0];
+      this.myform.get('post_url').setValue(this.file);
+      console.log(this.file.name);
     }
   }
 
@@ -68,6 +71,7 @@ export class DashboardComponent implements OnInit {
     if (this.myform.controls['caption'].value.length > 0 || this.myform.controls['post_url'].value) {
       this.service.create(formData).subscribe(data => {
         this.showPostError = false;
+        this.isSelected=false;
         this.myform.get('caption').setValue("");
         this.myform.controls['post_url'].reset();
         this.getAllPost();
@@ -75,6 +79,7 @@ export class DashboardComponent implements OnInit {
     }
     else {
       this.showPostError = true;
+    // alert("Please Insert Something");
     }
 }
 

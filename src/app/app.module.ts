@@ -48,13 +48,15 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here
     }),
+  
   ],
   providers: [
     CrudGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true // So that we can use multiple interceptors if required
-  }
+  },
+ 
 ],
   bootstrap: [AppComponent]
 })

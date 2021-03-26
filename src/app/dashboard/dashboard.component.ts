@@ -52,7 +52,6 @@ file:any;
       this.isSelected=true;
       this.file = event.target.files[0];
       this.myform.get('post_url').setValue(this.file);
-      console.log(this.file.name);
     }
   }
 

@@ -23,7 +23,6 @@ export class EditpostComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['post_id'];
     this.service.find(this.id).subscribe(data=>{this.Post=data;
-    console.warn(this.Post.caption);
   });
   }
 

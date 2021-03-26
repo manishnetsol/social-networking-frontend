@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('token', res.jwt); // Stored token in Local Storage
     this.router.navigate(['dashboard']);
      this.Loginservice.showLoginError = false;
+     this.Loginservice.LoginSuccess = false;
     },
   (err) => {
    this.Loginservice.LoginSuccess=false;

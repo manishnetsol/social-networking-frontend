@@ -30,10 +30,7 @@ export class EditpostComponent implements OnInit {
   get f() { return this.form.controls; }
 
   submit(){
-    //console.log(form1.value);
-    console.log(this.form.value);
     this.service.updatePost(this.id, this.form.value).subscribe(res => {
-         console.log('Post updated successfully!');
          this.router.navigate(['dashboard']);
     })
   }

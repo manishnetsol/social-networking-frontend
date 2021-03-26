@@ -17,7 +17,6 @@ import { OnlysidebarComponent } from './onlysidebar/onlysidebar.component';
 import { OnlynavComponent } from './onlynav/onlynav.component';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { CrudGuard } from './crud.guard';
-import { ConfirmComponent } from './confirm/confirm.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
@@ -32,8 +31,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
     DashboardComponent,
     EditpostComponent,
     OnlysidebarComponent,
-    OnlynavComponent,
-    ConfirmComponent,
+    OnlynavComponent
     
   ],
   imports: [

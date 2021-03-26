@@ -22,6 +22,7 @@ export class RegistrationComponent implements OnInit
       // confirmpassword: ['', Validators.required],
       // mobilenumber: ['', Validators.required]
     });
+    this.service.showSignUpError = false;
     }
 
     get f() { return this.angForm.controls; }
@@ -32,10 +33,10 @@ export class RegistrationComponent implements OnInit
 
   
   this.service.createUser(this.angForm.value).subscribe(res => {
-    this.service.showSignUpError=false;
     this.service.LoginMsg=res.message;
     this.service.LoginSuccess= true;
     this.router.navigate(['login']);
+    this.service.showSignUpError=false;
    },
    (err) => {
      this.service.showSignUpError = true;

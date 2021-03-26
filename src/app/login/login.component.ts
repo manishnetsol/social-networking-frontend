@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['dashboard']);
      this.Loginservice.showLoginError = false;
      this.Loginservice.LoginSuccess = false;
+     this.Loginservice.showSignUpError = false;
     },
   (err) => {
    this.Loginservice.LoginSuccess=false;

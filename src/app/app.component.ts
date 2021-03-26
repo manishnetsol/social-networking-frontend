@@ -14,7 +14,6 @@ export class AppComponent {
     this.service.getUsers2().subscribe(data=>
       {
        this.users=data;
-        console.log(this.users);
       } 
     );
   }

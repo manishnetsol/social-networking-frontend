@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
 // Post Data Of Created post to api
   postdata:any;
   submitted = false;
+  showPostError = false;
   formSubmit() {
     this.postdata = this.myform.value;
     this.submitted = true;
@@ -64,18 +65,16 @@ export class DashboardComponent implements OnInit {
     formData.append('type', this.myform.get('type').value);
     formData.append('user_id', this.myform.get('user_id').value);
     formData.append('caption', this.myform.get('caption').value);
-    if (this.myform.controls['caption'] != '' || this.myform.controls['post_url'] != null) {
+    if (this.myform.controls['caption'].value.length > 0 || this.myform.controls['post_url'].value) {
       this.service.create(formData).subscribe(data => {
-
-        console.log('Post created successfully!');
-        
-        this.myform.controls['caption'].reset();
+        this.showPostError = false;
+        this.myform.get('caption').setValue("");
         this.myform.controls['post_url'].reset();
         this.getAllPost();
        })
     }
     else {
-      alert("Kuch to daal bhai");
+      this.showPostError = true;
     }
 }
 
@@ -86,7 +85,6 @@ getAllPost()
   this.service.getUsers2().subscribe(data=>
     {
      this.users=data ;
-      console.log(this.users);
     });
 }
 
@@ -94,7 +92,6 @@ getAllPost()
 getdel(u:any){
 
   this.service.getdelete(u.post_id).subscribe(data=>{
-     console.log(u.post_id);
      this.getAllPost();
   }) 
 }
@@ -102,7 +99,6 @@ getdel(u:any){
 // Like Post
 likePost(u:any){
   this.service.createLikes(u.post_id,this.jwtDetails.data.id).subscribe(data=>{
-     console.log(u.post_id);
      this.getAllPost();
   });
 }
@@ -113,7 +109,6 @@ submitcomment(post_id:any)
 {
   this.commentdata=this.commentform.value;
   this.service.createComment(post_id,this.commentdata.user_id,this.commentdata.comment).subscribe(data=>{
-    console.warn("comment done!");
     this.getComments(post_id);
     this.commentform.controls['comment'].reset();
     this.getAllPost();
@@ -132,7 +127,6 @@ getComments(post_id:any)
   this.service.getcomments(post_id).subscribe(data=>
     {
      this.comments=data ;
-      console.log(this.comments);
     });
 }
 
@@ -141,7 +135,6 @@ getComments(post_id:any)
 delcomment(cmt:any){
   
   this.service.deletecomment(cmt.comment_id).subscribe(data=>{
-     console.log(cmt.comment_id);
      this.getComments(cmt.post_id);
      this.getAllPost();
   }) 

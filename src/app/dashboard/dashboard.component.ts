@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
 
         console.log('Post created successfully!');
         
-        this.myform.controls['caption'].reset();
+        this.myform.get('caption').setValue("");
         this.myform.controls['post_url'].reset();
         this.getAllPost();
        })

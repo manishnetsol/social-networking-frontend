@@ -96,11 +96,9 @@ getAllPost()
 //check user
 checkUser(u:any){
   if(u.user_id==this.jwtDetails.data.id){
-   this.service.checkUserValue= true;
    return true;
   }
   else{
-    this.service.checkUserValue= false;
     return false;
   }
 }
@@ -120,7 +118,6 @@ editPost(u:any){
 },
 (err)=>{
   this.service.checkUserError = true;
-  console.log("new" + this.service.checkUserError);
 });
 
 }

@@ -107,7 +107,7 @@
                             <p>{{cmt.comment}}</p>
                           </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2" *ngIf="checkUser(u) || checkUser(cmt);">
                           <button id="btn" (click)="delcomment(cmt)" class="btn btn-gray  p-1" name="sub">
                             <i class="fa fa-trash-o " style="color: rgb(24, 23, 23); margin-top: -7%;"></i></button>
                         </div>

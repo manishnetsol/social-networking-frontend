@@ -18,6 +18,8 @@ import { OnlynavComponent } from './onlynav/onlynav.component';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { CrudGuard } from './crud.guard';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { EditGuard } from './edit.guard';
+
 
 
 
@@ -49,11 +51,12 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
   
   ],
   providers: [
-    CrudGuard, {
+    EditGuard,CrudGuard,EditpostComponent,DashboardComponent,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true // So that we can use multiple interceptors if required
-  },
+  }
+  
  
 ],
   bootstrap: [AppComponent]

@@ -55,9 +55,13 @@ logoutUser() {
   getdelete(post_id:number){
     return this.http.delete(this.apiUrl2+'posts/'+post_id);
   }
+  checkUserError = false;
+  checkUserValue = false;
   //update post
   updatePost(id:number,caption:any){
+   
     return this.http.put(this.apiUrl2+'posts/'+id,JSON.stringify(caption));
+  
   }
   //find post 
   find(post_id:any) {

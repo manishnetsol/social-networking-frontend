@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { CrudService } from '../crud.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import jwt_decode from 'jwt-decode';
+import{Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -23,7 +24,7 @@ export class DashboardComponent implements OnInit {
   commentform:FormGroup|any;
   modalRef:BsModalRef|any;
   jwtDetails:any;
-  constructor(private fb: FormBuilder,private service : CrudService,private modalService: BsModalService) { }
+  constructor(private fb: FormBuilder,private service : CrudService,private router:Router,private modalService: BsModalService) { }
 
   ngOnInit(): void {
     // for jwt decode 
@@ -92,12 +93,36 @@ getAllPost()
     });
 }
 
+//check user
+checkUser(u:any){
+  if(u.user_id==this.jwtDetails.data.id){
+   this.service.checkUserValue= true;
+   return true;
+  }
+  else{
+    this.service.checkUserValue= false;
+    return false;
+  }
+}
 // Delete Post 
 getdel(u:any){
 
   this.service.getdelete(u.post_id).subscribe(data=>{
      this.getAllPost();
   }) 
+}
+//edit Post
+editPost(u:any){
+  this.service.find(u.post_id).subscribe(data=>{
+    this.service.checkUserError = false;
+    this.router.navigate(['/editpost',u.post_id]);
+
+},
+(err)=>{
+  this.service.checkUserError = true;
+  console.log("new" + this.service.checkUserError);
+});
+
 }
 
 // Like Post

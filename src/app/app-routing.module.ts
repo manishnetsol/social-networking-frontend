@@ -5,6 +5,7 @@ import {LoginComponent} from './login/login.component';
 import {EditpostComponent} from './editpost/editpost.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import { CrudGuard } from './crud.guard';
+import { EditGuard } from './edit.guard';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
   {
     path:'editpost/:post_id',
     component:EditpostComponent,
-    canActivate:[CrudGuard]
+    canActivate:[CrudGuard,EditGuard]
   },
  {
    path:'dashboard',

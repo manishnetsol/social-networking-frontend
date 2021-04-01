@@ -44,6 +44,7 @@ export class DashboardComponent implements OnInit {
       comment:[''],
     });
    this.getAllPost();
+   
   }
 // for file select
 isSelected=false;
@@ -92,16 +93,6 @@ getAllPost()
      this.users=data ;
     });
 }
-
-//check user
-checkUser(u:any){
-  if(u.user_id==this.jwtDetails.data.id){
-   return true;
-  }
-  else{
-    return false;
-  }
-}
 // Delete Post 
 getdel(u:any){
 
@@ -109,9 +100,23 @@ getdel(u:any){
      this.getAllPost();
   }) 
 }
+
+// Check User
+checkUser(u:any){
+  if(u.user_id==this.jwtDetails.data.id){
+    this.service.checkUserValue = true;
+    return true;
+  }
+  else{
+    this.service.checkUserValue = false;
+    return false;
+  }
+}
+
 //edit Post
 editPost(u:any){
   this.service.find(u.post_id).subscribe(data=>{
+    this.checkUser(u);
     this.service.checkUserError = false;
     this.router.navigate(['/editpost',u.post_id]);
 

@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+.wrap-all-the-things {
+
+    min-height: 75vh;
+    height: 100%;
+    width: 100%;
+    padding-left: 73px;
+    margin-top: 0;
+    transition: transform 400ms, opacity 400ms;
+  }
+  @media screen and (max: 480px) {
+    .wrap-all-the-things {
+      padding-left: 53px;
+    }
+  }

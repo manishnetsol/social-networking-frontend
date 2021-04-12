@@ -4,6 +4,7 @@ import {RegistrationComponent} from './registration/registration.component';
 import {LoginComponent} from './login/login.component';
 import {EditpostComponent} from './editpost/editpost.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 import { CrudGuard } from './crud.guard';
 import { EditGuard } from './edit.guard';
 
@@ -21,11 +22,16 @@ const routes: Routes = [
     component:EditpostComponent,
     canActivate:[CrudGuard,EditGuard]
   },
- {
-   path:'dashboard',
-   component:DashboardComponent,
-   canActivate:[CrudGuard]
- }
+  {
+    path:'dashboard',
+    component:DashboardComponent,
+    canActivate:[CrudGuard]
+  },
+  {
+    path:'profile',
+    component:ProfileComponent,
+    canActivate:[CrudGuard]
+  }
 
 ];
 

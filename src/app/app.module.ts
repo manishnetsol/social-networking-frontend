@@ -19,6 +19,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { CrudGuard } from './crud.guard';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { EditGuard } from './edit.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -33,7 +34,8 @@ import { EditGuard } from './edit.guard';
     DashboardComponent,
     EditpostComponent,
     OnlysidebarComponent,
-    OnlynavComponent
+    OnlynavComponent,
+    ProfileComponent
     
   ],
   imports: [

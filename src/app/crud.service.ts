@@ -101,4 +101,13 @@ logoutUser() {
   deletecomment(comment_id:number){
     return this.http.delete(this.apiUrl2+'comments/'+comment_id);
   }
+
+  getDecodedAccessToken(token: string): any {
+    try{
+        return jwt_decode(token);
+    }
+    catch(Error){
+        return null;
+    }
+  }
 } 

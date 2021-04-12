@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     // for jwt decode 
     this.jwtDetails = localStorage.getItem('token');
-    this.jwtDetails = this.getDecodedAccessToken(this.jwtDetails);
+    this.jwtDetails = this.service.getDecodedAccessToken(this.jwtDetails);
 
     this.myform = this.fb.group({
       caption: [''],
@@ -174,14 +174,7 @@ delcomment(cmt:any){
 
 // for login
 
-getDecodedAccessToken(token: string): any {
-  try{
-      return jwt_decode(token);
-  }
-  catch(Error){
-      return null;
-  }
-}
+
 
 // Upload Photo using name = 'image'
 

@@ -124,7 +124,6 @@ editPost(u:any){
 (err)=>{
   this.service.checkUserError = true;
 });
-
 }
 
 // Like Post

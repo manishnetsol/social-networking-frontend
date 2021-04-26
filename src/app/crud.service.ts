@@ -110,4 +110,11 @@ logoutUser() {
         return null;
     }
   }
+
+  // for profile
+
+  getUserPosts(user_id:number)
+  {
+    return this.http.get(this.apiUrl2+'profile/'+user_id);
+  }
 } 

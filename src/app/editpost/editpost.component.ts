@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { CrudService } from '../crud.service';
 import{Router,ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-editpost',
   templateUrl: './editpost.component.html',
@@ -14,7 +15,7 @@ export class EditpostComponent implements OnInit {
   constructor(private fb:FormBuilder,
     private service : CrudService ,
      private router:Router,
-       private route:ActivatedRoute) {
+       private route:ActivatedRoute, private location:Location) {
         this.form = this.fb.group({
           caption: ['', [Validators.required]], 
           });
@@ -28,7 +29,7 @@ export class EditpostComponent implements OnInit {
       })
   },
   (err)=>{
-    this.router.navigate(['/dashboard']);
+    this.location.back();
   });
 }
 
@@ -36,7 +37,8 @@ export class EditpostComponent implements OnInit {
  
   submit(){
     this.service.updatePost(this.id, this.form.value).subscribe(res => {
-         this.router.navigate(['dashboard']);
+        // for storing history of routes 
+      this.location.back();
         
     })
   }
